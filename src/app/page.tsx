@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 
-
 export default function Home() {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<{ question: string; options: string[]; answer: string }[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [, setCorrectAnswer] = useState(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [correctAnswer, setCorrectAnswer] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
 
@@ -19,9 +18,9 @@ export default function Home() {
   const handleSelect = (option: string) => {
     if (!selectedOption) {
       setSelectedOption(option);
-      if (option === questions[currentIndex].answer) {
+      if (option === questions[currentIndex]?.answer) {
         setCorrectAnswer(true);
-        setScore(score + 1);
+        setScore((prev) => prev + 1);
       } else {
         setCorrectAnswer(false);
       }
@@ -30,7 +29,7 @@ export default function Home() {
 
   const handleNext = () => {
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prev) => prev + 1);
       setSelectedOption(null);
       setCorrectAnswer(null);
     } else {
@@ -48,7 +47,6 @@ export default function Home() {
       </nav>
 
       {quizFinished ? (
-        // Final result page
         <div className="mt-20 bg-white p-10 rounded-lg shadow-md text-center">
           <h1 className="text-3xl font-bold">Quiz Completed!</h1>
           <p className="text-lg mt-4">Your Score: <span className="font-semibold">{score} / {questions.length}</span></p>
@@ -66,26 +64,24 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        // Quiz UI
         <div className="w-full max-w-3xl bg-white p-6 rounded-lg shadow-md mt-10">
-          {/* Question Counter & Timer Placeholder */}
           <div className="flex justify-end gap-2 items-center mb-4">
             <h1 className="text-lg font-semibold">{currentIndex + 1} of {questions.length}</h1>
             <span className="text-gray-600">Score: {score}</span>
           </div>
 
-          <h2 className="text-xl font-medium text-center my-4">{questions[currentIndex].question}</h2>
+          <h2 className="text-xl font-medium text-center my-4">{questions[currentIndex]?.question}</h2>
 
           {/* Options Grid */}
           <div className="grid grid-cols-2 gap-4">
-            {questions[currentIndex].options.map((option, index) => (
+            {questions[currentIndex]?.options?.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleSelect(option)}
                 disabled={selectedOption !== null}
                 className={`w-full py-3 text-lg font-medium rounded-lg border-2 transition ${
                   selectedOption
-                    ? option === questions[currentIndex].answer
+                    ? option === questions[currentIndex]?.answer
                       ? "border-green-500 bg-green-100 text-black"
                       : option === selectedOption
                       ? "border-red-500 bg-red-100 text-black"
@@ -98,7 +94,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Next Button */}
           {selectedOption && (
             <button
               onClick={handleNext}
