@@ -1,0 +1,29 @@
+[
+    {
+      "question": "What country do Italy, Spain, and Belgium all touch?",
+      "options": ["Netherlands", "France", "Germany", "Switzerland"],
+      "answer": "France"
+    },
+    {
+      "question": "Which planet is closest to the Sun?",
+      "options": ["Earth", "Venus", "Mercury", "Mars"],
+      "answer": "Mercury"
+    },
+    {
+      "question": "Which element has the chemical symbol 'O'?",
+      "options": ["Oxygen", "Gold", "Silver", "Iron"],
+      "answer": "Oxygen"
+    },
+    {
+      "question": "What is the capital of Japan?",
+      "options": ["Seoul", "Tokyo", "Bangkok", "Beijing"],
+      "answer": "Tokyo"
+    },
+    {
+      "question": "Who developed the theory of relativity?",
+      "options": ["Newton", "Galileo", "Einstein", "Tesla"],
+      "answer": "Einstein"
+    }
+  ]
+
+  
