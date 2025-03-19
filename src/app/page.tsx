@@ -16,7 +16,7 @@ export default function Home() {
       .then((data) => setQuestions(data));
   }, []);
 
-  const handleSelect = (option) => {
+  const handleSelect = (option: string) => {
     if (!selectedOption) {
       setSelectedOption(option);
       if (option === questions[currentIndex].answer) {
