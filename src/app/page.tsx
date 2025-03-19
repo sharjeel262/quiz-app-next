@@ -6,7 +6,7 @@ export default function Home() {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [, setCorrectAnswer] = useState(null);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
 
